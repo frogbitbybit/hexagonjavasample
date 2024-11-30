@@ -22,7 +22,7 @@ sequenceDiagram;
 A visão acima é comum em muitas arquiteturas, porém para o uso de uma arquitetura hexagonal em que não se pode gerar dependência nas camadas de dominio, existe o desafio de implementação sem notações ou o uso de classes frameworks externos, como o JPA por exemplo nas classes de entidade.
 
 
-Para tentar resolver este problema, adotei a seguinte estragia apresentada no diagrama abaixo:
+Para tentar resolver este problema, adotei a seguinte estrategia apresentada no diagrama abaixo:
 
 ```mermaid
 classDiagram
