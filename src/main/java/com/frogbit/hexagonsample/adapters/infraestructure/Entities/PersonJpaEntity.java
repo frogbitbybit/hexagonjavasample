@@ -1,13 +1,13 @@
-package com.frogbit.hexagonsample.adapters;
+package com.frogbit.hexagonsample.adapters.infraestructure.Entities;
 
+import com.frogbit.hexagonsample.domain.entities.Person;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.util.Date;
 
 @Entity
 @Table(name="person")
-public class PersonEntity {
+public class PersonJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +15,9 @@ public class PersonEntity {
     private String name;
     private Date birthDate;
 
-    public  PersonEntity(){}
+    public PersonJpaEntity(){}
 
-    public PersonEntity(int id, String name, Date birthDate) {
+    public PersonJpaEntity(int id, String name, Date birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -47,4 +47,18 @@ public class PersonEntity {
         this.birthDate = birthDate;
     }
 
+    public static PersonJpaEntity fromDomain(Person entity){
+
+        return new PersonJpaEntity(
+                entity.getId(),
+                entity.getName(),
+                entity.getBirthDate());
+    }
+
+    public Person toDomain(){
+        return new Person(
+                this.getId(),
+                this.getName(),
+                this.getBirthDate());
+    }
 }
